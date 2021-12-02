@@ -1,23 +1,21 @@
-@extends('layouts.base')
+<?php $__env->startSection('title', '災害情報ポータルサイト'); ?>
 
-@section('title', '災害情報ポータルサイト')
+<?php $__env->startSection('body_id', 'event-index'); ?>
 
-@section('body_id', 'event-index')
-
-@section('navbar')
+<?php $__env->startSection('navbar'); ?>
     <span class="navbar-brand mx-0 text-center text-light">災害情報ポータルサイト</span>
     <span></span>
     <span>
-        <a href="{{ route('event.edit') }}">
+        <a href="<?php echo e(route('event.edit')); ?>">
             <i class="fas fa-lg fa-edit text-light"></i>
         </a>
-        <a href="{{ route('event.about') }}">
+        <a href="<?php echo e(route('event.about')); ?>">
             <i class="fas fa-lg fa-info-circle text-light"></i>
         </a>
     </span>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contents')
+<?php $__env->startSection('contents'); ?>
     <div class="row row-cols-1 row-cols-md-2 mx-0"  id="data-wrapper">
         <!-- Data Loader -->
         <div class="auto-load text-center">
@@ -31,11 +29,11 @@
             </svg>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
-    var ENDPOINT = "{{ url('/') }}";
+    var ENDPOINT = "<?php echo e(url('/')); ?>";
     var page = 1;
     infinteLoadMore(page);
     $('.auto-load').hide();
@@ -70,5 +68,7 @@
             });
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\emergency_information-main\resources\views/event/index.blade.php ENDPATH**/ ?>

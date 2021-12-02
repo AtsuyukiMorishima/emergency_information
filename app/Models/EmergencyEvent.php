@@ -24,7 +24,9 @@ class EmergencyEvent extends Model
     /** @var string[] */
     protected $fillable = [
         'event_title',
+        'event_name',
         'event_date',
+        'event_body'
     ];
 
     /** @var string[] */
