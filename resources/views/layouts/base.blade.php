@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href='{{ mix('/css/app.css') }}'>
+    <link rel="stylesheet" href='{{asset('/css/event.css')}}'>
+     <!--<link rel="stylesheet" href='css/w3-fix.css'> -->
 </head>
 
 <body id="@yield('body_id')" class="pb-2">
@@ -23,7 +25,11 @@
         </div>
     </main>
 
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src='{{ mix('/js/app.js') }}'></script>
+    <script src='{{asset('js/jquery.min.js')}}'></script>
+    <script src='{{asset('js/script.js')}}'></script>
+    @yield('script')
+
 </body>
 
 </html>
