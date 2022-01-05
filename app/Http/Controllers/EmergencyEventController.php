@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\EmergencyEvent;
 use App\Models\SiteUrl;
 use Illuminate\Contracts\View\View;
+use DB;
 
 class EmergencyEventController extends Controller
 {
@@ -55,11 +56,14 @@ class EmergencyEventController extends Controller
         $emergencyEvent = EmergencyEvent::findOrFail($id);
         $SiteUrl = SiteUrl::all();
         $sort = $request['event_tag'];  
+        $sort_by_favor = 'site_favor';
+        // var_dump($sort_by_favor);
 
         return view(
             'event.show', [
             'emergencyEvent' => $emergencyEvent,
-            'sort' => $sort
+            'sort' => $sort,
+            'sort_by_favor' => $sort_by_favor
             ]
         );
     }
@@ -97,16 +101,14 @@ class EmergencyEventController extends Controller
     public function favorVote(Request $request){
         $sitename = $request->input('site_name');            
         $selectedSite = SiteUrl::where('site_name',$sitename)->get();  
-        var_export($selectedSite);
-        $selectedSite->site_favor = $request->input('sitefavor') ;     
-        // $selectedSite = SiteUrl::find($selectedSite->site_id);
-        // $selectedSite->site_favor = $request->input('site_favor');   
-        // $selectedSite->();
-
-        return $selectedSite;
+        // $selectedSite = SiteUrl::find();
+        // $sitename = "new wind";
+        $favorNum = $selectedSite[0]['site_favor'];
+        $favorNum = $favorNum + 1; 
+        DB::update('UPDATE site_url SET site_favor = ? WHERE site_name = ?', [$favorNum, $sitename]);  
+        $data = DB::select('select site_favor from site_url where site_name =?', [$sitename]);   
+             
+        echo json_encode($data);
     }
 
-    public function startwork(Request $req) {
-
-    }
 }

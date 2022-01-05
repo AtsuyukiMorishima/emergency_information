@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('', 'EmergencyEventController@index')->middleware('auth')->name('event.index');
 Route::get('{id}', 'EmergencyEventController@show')->where('id', '[0-9]+')->name('event.show');
 Route::view('about', 'event.about')->name('event.about');
-Route::POST('{id}', 'EmergencyEventController@show')->where('id', '[0-9]+')->name('event.show');
+Route::POST('{id}', 'EmergencyEventController@show')->where('id', '[0-9]+');
+
 
 Route::get('edit', 'EmergencyEventController@editlist')->name('event.edit');
 Route::delete('edit/todo/{id}', 'DbController@deleteTodoById');

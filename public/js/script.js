@@ -72,12 +72,20 @@ $(document).ready(function(){
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+});
 
-  $("#favorBtn").on("click", function() {
-    var sitename = document.getElementById('sitename').innerText;
-    // console.log(sitename);
+
+$(function(){
+
+  // handle delete button click
+  $('body').on('click', '#favorBtn', function(e) {
+    e.preventDefault();
+
+    var sitename = $(this).attr("data-name");
+    console.log(sitename);
     var csrf_token = $('meta[name="csrf-token"]').attr('content');
-    var sitefavor = Number(document.getElementById('site_favor').innerText)+1;
+        
+    // console.log(site_favor);
     $.ajax({
       headers: {
           'X-CSRF-TOKEN': csrf_token
@@ -86,15 +94,36 @@ $(document).ready(function(){
       data : {
                 'token' : csrf_token,
                 'site_name' : sitename,
-                'site_favor':sitefavor
+                // 'site_favor':sitefavor
               },
       type : 'POST',
       dataType : '',
       success : function(result){
-
-          console.log("===== " + result + " =====");
-
+          var data = JSON.parse(result);
+          console.log(data[0]['site_favor']);
+          document.getElementById(sitename).innerHTML = data[0]['site_favor'];
+          // document.getElementsByName("sit")          
+  
       }
   });
-  });
-});
+  })
+})
+
+$( document ).ready(function() {
+     // handle delete button click
+    $('body').on('click', '#sort_by_favor', function(e) {
+      // e.preventDefault();
+  
+      // redrawhtml = "";
+  
+      console.log(document.getElementById('sort_by_favor').checked);
+      if(document.getElementById('sort_by_favor').checked){
+        // alert('ddd');
+          document.getElementById('favor_search').style.display = 'block';
+          document.getElementById('date_search').style.display = 'none';
+      }else{
+        document.getElementById('favor_search').style.display = 'none';
+          document.getElementById('date_search').style.display = 'block';
+      }
+    });
+})

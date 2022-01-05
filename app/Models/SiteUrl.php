@@ -26,6 +26,7 @@ class SiteUrl extends Model
         'ee_id',
         'url',
         'registration_date',
+        'site_favor',
         'event_tag',
     ];
 

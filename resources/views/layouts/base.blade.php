@@ -25,9 +25,9 @@
         </div>
     </main>
 
-    <script src='{{ mix('/js/app.js') }}'></script>
-    <script src='{{asset('js/jquery.min.js')}}'></script>
-    <script src='{{asset('js/script.js')}}'></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
     @yield('script')
 
 </body>

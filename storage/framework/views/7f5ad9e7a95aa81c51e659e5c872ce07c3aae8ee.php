@@ -84,4 +84,4 @@
     </div>
 </body>
 </html>
-<?php /**PATH E:\crowdworks\ymuntae\emergency_information-main\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\xampp\htdocs\emergency_information-main\resources\views/layouts/app.blade.php ENDPATH**/ ?>

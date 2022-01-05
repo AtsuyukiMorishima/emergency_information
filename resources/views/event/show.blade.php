@@ -48,16 +48,19 @@
                         <i class="fas fa-lg fa-thumbs-up text-primary"></i>
                       </div>
                       <div class="col-sm-6">
-                       <input type="checkbox" class="form-check-input" name="event_allow">
+                        
+                       <input type="checkbox" class="form-check-input" id="sort_by_favor"  name="event_allow">
                       </div>
                     </div>
                   </div>
                 </div>
             </div>
         </div>
-            <ul class="list-group list-group-flush"   id="keyword_serch">
-              @if($sort==0||null)
+            <ul class="list-group list-group-flush"   id="date_search">
+
+              @if($sort==0||null) 
                   @forelse ($emergencyEvent->SiteUrls->sortByDesc('registration_date') as $siteUrl)
+
                   <li class="list-group-item">
                      <div class="row">
                       <div class="col-sm-10" >
@@ -69,22 +72,23 @@
                              <div class="media-body">
                               <h5 class="text-secondary" id="sitename" style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
                               <h6 class="card-text text-secondary">{{ $siteUrl->site_title }}</h6>
-                              <button class="btn btn-outline-danger allow" id="favorBtn">
-                                <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light" id="site_favor">{{ $siteUrl->site_favor }}</span></i>
+                              <button class="btn btn-outline-danger allow" id="favorBtn" data-name="{{$siteUrl->site_name}}">
+                                <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light" id="{{ $siteUrl->site_name }}">{{ $siteUrl->site_favor }}</span></i>
                               </button>
                              </div>
                            </div>
                           </div>
                       </div>
-          
                      </div>
-                    </li>
+                    </li> 
                 @empty
                     <li class="list-group-item">
                         <span class="text-secondary">Not found.</span>
                     </li>
+                    
                 @endforelse
-              @else
+              @else 
+              <?php $i = 1?>
                   @forelse ($emergencyEvent->SiteUrls->where('event_tag',$sort)->sortByDesc('registration_date') as $siteUrl)              
                     <li class="list-group-item">
                      <div class="row">
@@ -97,8 +101,8 @@
                              <div class="media-body">
                               <h5 class="text-secondary" id="sitename"  style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
                               <h6 class="card-text text-secondary">{{ $siteUrl->site_title }}</h6>
-                              <button class="btn btn-outline-danger allow" id="favorBtn">
-                                   <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light" id="site_favor"></span>{{$siteUrl->site_favor}}</i>
+                              <button class="btn btn-outline-danger allow" id="favorBtn" data-name="{{$siteUrl->site_name}}">
+                                   <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light" id="{{ $siteUrl->site_name }}"></span>{{$siteUrl->site_favor}}</i>
                               </button>
                              </div>
                            </div>
@@ -112,20 +116,89 @@
                         </div>
                       </div> -->
                      </div>
-                    </li>
+                    </li> 
                 @empty
                     <li class="list-group-item">
                         <span class="text-secondary">Not found.</span>
                     </li>
+                    
+                @endforelse
+                @endif
+            </ul>
+
+
+
+
+            <ul class="list-group list-group-flush"   id="favor_search" style="display:none">
+
+              @if($sort==0||null) 
+                  @forelse ($emergencyEvent->SiteUrls->sortByDesc('site_favor') as $siteUrl)
+
+                  <li class="list-group-item">
+                     <div class="row">
+                      <div class="col-sm-10" >
+                          <div class="container">
+                           <div class="media p-3">
+                             <a href="{{$emergencyEvent->event_title}}/{{ $siteUrl->URL }}" >
+                               <img src="img/2.jpg" class="mr-3 rounded-circle" style="width:47px;">
+                             </a>
+                             <div class="media-body">
+                              <h5 class="text-secondary" id="sitename" style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
+                              <h6 class="card-text text-secondary">{{ $siteUrl->site_title }}</h6>
+                              <button class="btn btn-outline-danger allow" id="favorBtn" data-name="{{$siteUrl->site_name}}">
+                                <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light" id="{{ $siteUrl->site_name }}">{{ $siteUrl->site_favor }}</span></i>
+                              </button>
+                             </div>
+                           </div>
+                          </div>
+                      </div>
+                     </div>
+                    </li> 
+                @empty
+                    <li class="list-group-item">
+                        <span class="text-secondary">Not found.</span>
+                    </li>
+                    
+                @endforelse
+              @else 
+              <?php $i = 1?>
+                  @forelse ($emergencyEvent->SiteUrls->where('event_tag',$sort)->sortByDesc('site_favor') as $siteUrl)              
+                    <li class="list-group-item">
+                     <div class="row">
+                      <div class="col-sm-10" >
+                          <div class="container">
+                           <div class="media p-3" >
+                           <a href="{{$emergencyEvent->event_title}}/{{ $siteUrl->URL }}" >
+                             <img src="img/2.jpg" class="mr-3 rounded-circle" style="width:47px;">
+                           </a>
+                             <div class="media-body">
+                              <h5 class="text-secondary" id="sitename"  style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
+                              <h6 class="card-text text-secondary">{{ $siteUrl->site_title }}</h6>
+                              <button class="btn btn-outline-danger allow" id="favorBtn" data-name="{{$siteUrl->site_name}}">
+                                   <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light" id="{{ $siteUrl->site_name }}"></span>{{$siteUrl->site_favor}}</i>
+                              </button>
+                             </div>
+                           </div>
+                          </div>
+                      </div>
+                      <!-- <div class="col-sm-2">
+                        <div class="btn-group btn-group-sm">   
+                         <button class="btn btn-outline-danger">
+                          <i class="fas fa-lg fa-thumbs-up text-primary"><span class="badge badge-light">4</span></i>
+                         </button>
+                        </div>
+                      </div> -->
+                     </div>
+                    </li> 
+                @empty
+                    <li class="list-group-item">
+                        <span class="text-secondary">Not found.</span>
+                    </li>
+                    
                 @endforelse
                 @endif
             </ul>
         </div>
-    </div>
-    <script>
-      $("#favorBtn").click(function(){
-        console.log("ere")
-      })
-    </script>
+    </div> 
 @endsection
 

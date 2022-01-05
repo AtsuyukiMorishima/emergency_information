@@ -25,11 +25,11 @@
         </div>
     </main>
 
-    <script src='<?php echo e(mix('/js/app.js')); ?>'></script>
-    <script src='<?php echo e(asset('js/jquery.min.js')); ?>'></script>
-    <script src='<?php echo e(asset('js/script.js')); ?>'></script>
+    <script src="<?php echo e(mix('/js/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/script.js')); ?>"></script>
     <?php echo $__env->yieldContent('script'); ?>
 
 </body>
 
-</html><?php /**PATH E:\crowdworks\ymuntae\emergency_information-main\resources\views/layouts/base.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\xampp\htdocs\emergency_information-main\resources\views/layouts/base.blade.php ENDPATH**/ ?>
