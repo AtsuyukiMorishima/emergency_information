@@ -1,12 +1,10 @@
-@extends('layouts.base')
+<?php $__env->startSection('title', '災害情報ポータルプロジェクトについて - 災害情報ポータルサイト'); ?>
 
-@section('title', '災害情報ポータルプロジェクトについて - 災害情報ポータルサイト')
+<?php $__env->startSection('body_id', 'event-about'); ?>
 
-@section('body_id', 'event-about')
-
-@section('navbar')
+<?php $__env->startSection('navbar'); ?>
     <span>
-        <a href="{{ route('event.index') }}">
+        <a href="<?php echo e(route('event.index')); ?>">
             <i class="fas fa-lg fa-arrow-left text-light"></i>
         </a>
     </span>
@@ -16,9 +14,9 @@
         プロジェクトについて
     </span>
     <span></span>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contents')
+<?php $__env->startSection('contents'); ?>
     <div class="card shadow">
         <div class="card-head text-center">
             <h2 class="head-title">緊急ポータルサイト</h2>
@@ -31,4 +29,5 @@
             </p>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\emergency-compelete\resources\views/event/about.blade.php ENDPATH**/ ?>

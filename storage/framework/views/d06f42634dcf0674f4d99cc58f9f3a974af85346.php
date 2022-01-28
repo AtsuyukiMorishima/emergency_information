@@ -1,12 +1,12 @@
-@extends('layouts.base')
 
-@section('title',  "災害情報ポータルサイト")
 
-@section('body_id', 'event-urledit')
+<?php $__env->startSection('title',  "災害情報ポータルサイト"); ?>
 
-@section('navbar')
+<?php $__env->startSection('body_id', 'event-urledit'); ?>
+
+<?php $__env->startSection('navbar'); ?>
     <span>
-        <a href="{{ route('event.index') }}">
+        <a href="<?php echo e(route('event.index')); ?>">
             <i class="fas fa-lg fa-arrow-left text-light"></i>
         </a>
     </span>
@@ -16,9 +16,9 @@
         ページ
     </span>
     <span></span>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contents')
+<?php $__env->startSection('contents'); ?>
     <div class="card shadow">
         <div class="card-body">
             <p class="card-text text-secondary">
@@ -36,21 +36,21 @@
                          <th>編集</th>
                       </tr>
                     </thead>
-                    @forelse ($SiteUrls->sortByDesc('registration_date') as $siteUrl)
+                    <?php $__empty_1 = true; $__currentLoopData = $SiteUrls->sortByDesc('registration_date'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $siteUrl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tbody>
                       <tr style="overflow-wrap:anywhere;">
-                         <td>{{$siteUrl->site_title}}</td>
-                         <td>{{$siteUrl->URL}}</td>
-                         <td>{{$siteUrl->site_name}}</td>
+                         <td><?php echo e($siteUrl->site_title); ?></td>
+                         <td><?php echo e($siteUrl->URL); ?></td>
+                         <td><?php echo e($siteUrl->site_name); ?></td>
                          <td>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-success" data-toggle="modal" data-target="#myModal-{{ $siteUrl->site_id }}">変更</a>
+                                <a class="btn btn-success" data-toggle="modal" data-target="#myModal-<?php echo e($siteUrl->site_id); ?>">変更</a>
                                 
-                                <div class="modal" id="myModal-{{ $siteUrl->site_id }}">
+                                <div class="modal" id="myModal-<?php echo e($siteUrl->site_id); ?>">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                     <form action="/urledit" method="POST" class="form-group">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                      <!-- Modal Header -->
                                      <div class="modal-header">
                                        <h4 class="modal-title">変更</h4>
@@ -61,10 +61,10 @@
                                      <div class="modal-body">
                                           <div class="form-group">
                                              <label class="form-group-text">Url:</label>
-                                             <input type="text" class="form-control" value="{{$siteUrl->URL}}" name="URL">
+                                             <input type="text" class="form-control" value="<?php echo e($siteUrl->URL); ?>" name="URL">
                                           </div>
-                                          <input style="display:none;" value="{{$siteUrl->site_id}}" name="id">
-                                          <input style="display:none;" value="{{$siteUrl->ee_id}}" name="ee_id">
+                                          <input style="display:none;" value="<?php echo e($siteUrl->site_id); ?>" name="id">
+                                          <input style="display:none;" value="<?php echo e($siteUrl->ee_id); ?>" name="ee_id">
                                      </div>
         
                                      <!-- Modal footer -->
@@ -76,20 +76,20 @@
                                   </div>
                                 </div>
                                                             
-                                <button type="button" class="btn btn-danger url-delete-btn" data-ID="{{$siteUrl->site_id}}">削除</button>
+                                <button type="button" class="btn btn-danger url-delete-btn" data-ID="<?php echo e($siteUrl->site_id); ?>">削除</button>
                              </div>
                          </td>
                       </tr>
                     </tbody>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <span>No Found.</span>
-                    @endforelse
+                    <?php endif; ?>
                   </table>
                   <div class="modal" id="myModal">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                     <form action="/urledit/create" method="POST" enctype="multipart/form-data" class="form-group">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                      <!-- Modal Header -->
                                      <div class="modal-header">
                                        <h4 class="modal-title">追加</h4>
@@ -126,7 +126,7 @@
                                              <label class="form-group-text">画像:</label>
                                              <input type="file" class="form-control" name="event_img">    
                                            </div>
-                                          <input style="display:none;" value="{{$emergencyEvent}}" name="ee_id">
+                                          <input style="display:none;" value="<?php echo e($emergencyEvent); ?>" name="ee_id">
                                      </div>
         
                                      <!-- Modal footer -->
@@ -141,4 +141,6 @@
             </p>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\emergency-compelete\resources\views/event/urledit.blade.php ENDPATH**/ ?>

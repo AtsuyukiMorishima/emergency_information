@@ -67,7 +67,7 @@
                           <div class="container">
                            <div class="media p-3">
                              <a href="{{$emergencyEvent->event_title}}/{{ $siteUrl->URL }}" >
-                               <img src="img/2.jpg" class="mr-3 rounded-circle" style="width:47px;">
+                               <img src="images/{{$siteUrl->event_img}}" class="mr-3 rounded-circle" style="width:47px;">
                              </a>
                              <div class="media-body">
                               <h5 class="text-secondary" id="sitename" style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
@@ -96,7 +96,7 @@
                           <div class="container">
                            <div class="media p-3" >
                            <a href="{{$emergencyEvent->event_title}}/{{ $siteUrl->URL }}" >
-                             <img src="img/2.jpg" class="mr-3 rounded-circle" style="width:47px;">
+                           <img src="images/{{$siteUrl->event_img}}" class="mr-3 rounded-circle" style="width:47px;">
                            </a>
                              <div class="media-body">
                               <h5 class="text-secondary" id="sitename"  style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
@@ -140,7 +140,7 @@
                           <div class="container">
                            <div class="media p-3">
                              <a href="{{$emergencyEvent->event_title}}/{{ $siteUrl->URL }}" >
-                               <img src="img/2.jpg" class="mr-3 rounded-circle" style="width:47px;">
+                             <img src="images/{{$siteUrl->event_img}}" class="mr-3 rounded-circle" style="width:47px;">
                              </a>
                              <div class="media-body">
                               <h5 class="text-secondary" id="sitename" style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>
@@ -169,7 +169,7 @@
                           <div class="container">
                            <div class="media p-3" >
                            <a href="{{$emergencyEvent->event_title}}/{{ $siteUrl->URL }}" >
-                             <img src="img/2.jpg" class="mr-3 rounded-circle" style="width:47px;">
+                           <img src="images/{{$siteUrl->event_img}}" class="mr-3 rounded-circle" style="width:47px;">
                            </a>
                              <div class="media-body">
                               <h5 class="text-secondary" id="sitename"  style="overflow-wrap:anywhere;">{{$siteUrl->site_name}}</h5>

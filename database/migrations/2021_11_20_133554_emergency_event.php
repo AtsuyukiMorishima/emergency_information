@@ -19,6 +19,7 @@ class EmergencyEvent extends Migration
             $table->string('event_title');
             $table->date('event_date');
             $table->string('event_body');
+            $table->string('event_img');
         });
     }
 

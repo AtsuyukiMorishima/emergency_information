@@ -99,9 +99,9 @@ $(function(){
       type : 'POST',
       dataType : '',
       success : function(result){
-          var data = JSON.parse(result);
-          console.log(data[0]['site_favor']);
-          document.getElementById(sitename).innerHTML = data[0]['site_favor'];
+          var data = result;
+          console.log(data);
+          document.getElementById(sitename).innerHTML = data;
           // document.getElementsByName("sit")          
   
       }

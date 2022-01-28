@@ -21,6 +21,8 @@ class SiteUrl extends Migration
             $table->string('event_tag');
             $table->string('site_title');
             $table->string('site_name');
+            $table->string('event_img')->default('no image');
+            $table->string('site_favor')->default('0');
         });
     }
 

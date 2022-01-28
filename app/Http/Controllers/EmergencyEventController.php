@@ -27,15 +27,15 @@ class EmergencyEventController extends Controller
 
         if ($request->ajax()) {
             foreach ($emergencyEvents as $result) {
-            $data .=  '<div class="card shadow-sm">
+            $data .=  '<div class="card-body shadow-sm">
                             <div class="card">
                                 <a href="/'.$result->ee_id.'">
-                                    <img class="card-img-top" src="img/'.$result->ee_id.'.jpg" style="width:100%">
+                                    <img class="card-img-top" src="images/'.$result->event_img.'" style="width:100%">
                                 </a>
                                     <div class="card-img-overlay" style="position:relative;">
                                         <h5 class="card-text">'. $result->event_name .'</h5>
                                         <h6 class="card-text text-secondary">'. $result->event_title .'</h6>
-                                        <h7 class="card-text">'. $result->event_body .'</h7>
+                                        <h7 class="card-text">'. $result->event_body .'</h7>                                        
                                     </div>
                             </div>
                         </div>';
@@ -100,15 +100,14 @@ class EmergencyEventController extends Controller
     
     public function favorVote(Request $request){
         $sitename = $request->input('site_name');            
-        $selectedSite = SiteUrl::where('site_name',$sitename)->get();  
-        // $selectedSite = SiteUrl::find();
-        // $sitename = "new wind";
-        $favorNum = $selectedSite[0]['site_favor'];
+        $selectedSite = SiteUrl::where('site_name',$sitename)->first();  
+        
+        $favorNum = $selectedSite['site_favor'];
         $favorNum = $favorNum + 1; 
         DB::update('UPDATE site_url SET site_favor = ? WHERE site_name = ?', [$favorNum, $sitename]);  
-        $data = DB::select('select site_favor from site_url where site_name =?', [$sitename]);   
+        // $data = DB::select('select site_favor from site_url where site_name =?', [$sitename]);   
              
-        echo json_encode($data);
+        echo json_encode($favorNum);
     }
 
 }

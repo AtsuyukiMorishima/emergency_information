@@ -21,7 +21,7 @@ class DbController extends Controller
    $validatedData = $request->validate([
       'event_title' => 'required',
       'event_name' => 'required',
-      'event_body' => 'required',
+      'event_body' => 'required',      
     ]); 
   
     // find
@@ -37,10 +37,19 @@ class DbController extends Controller
     if(isset($request['event_body'])){
       $todo->event_body = $request['event_body'];
     }
-    // if (isset($request['todo-status'])) {
-    //   $todo->event_date = $request['todo-status'];
-    // }
-  
+    if (isset($request['todo-status'])) {
+      $todo->event_date = $request['todo-status'];
+    }
+    if($image = $request->file('event_img')){   
+      $destinationPath = 'images/';
+      $event_img = date('YmdHis').'.'.$image->getClientOriginalExtension();     
+      $image->move($destinationPath, $event_img);
+      
+      $todo->event_img = $event_img;             
+    }else {
+      unset($todo['event_img']);
+    }
+ 
     // // update
      $todo->update();
   
@@ -55,11 +64,13 @@ class DbController extends Controller
 
    public function create( Request $request)
    {
+
     $validatedData = $request->validate([
         'event_title' => 'required',
         'event_name' => 'required',
         'event_body' => 'required',
         'event_date' => 'required',
+        'event_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
       ]); 
        $todo=new EmergencyEvent();
     
@@ -75,6 +86,16 @@ class DbController extends Controller
       }
       if (isset($request['event_body'])){
         $todo->event_body = $request['event_body'];
+      }                                                 
+          var_export($request->file('event_img'));
+          // exit; 
+        if($image = $request->file('event_img')){   
+          $destinationPath = 'images/';
+          $event_img = date('YmdHis').'.'.$image->getClientOriginalExtension();     
+          $image->move($destinationPath, $event_img);
+          
+          $todo->event_img = $event_img;         
+        
       }
     
       // // update

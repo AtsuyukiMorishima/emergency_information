@@ -17,7 +17,7 @@
             @yield('navbar')
         </div>
     </header>
-    <main class="container mt-lg-5 mt-3">
+    <main class="container main-body">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 @yield('contents')

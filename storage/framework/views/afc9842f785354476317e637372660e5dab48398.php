@@ -1,12 +1,12 @@
-@extends('layouts.base')
 
-@section('title', '災害情報ポータルプロジェクトについて - 災害情報ポータルサイト')
 
-@section('body_id', 'event-edit')
+<?php $__env->startSection('title', '災害情報ポータルプロジェクトについて - 災害情報ポータルサイト'); ?>
 
-@section('navbar')
+<?php $__env->startSection('body_id', 'event-edit'); ?>
+
+<?php $__env->startSection('navbar'); ?>
     <span>
-        <a href="{{ route('event.index') }}">
+        <a href="<?php echo e(route('event.index')); ?>">
             <i class="fas fa-lg fa-arrow-left text-light"></i>
         </a>
     </span>
@@ -16,9 +16,9 @@
         編集
     </span>
     <span></span>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contents')
+<?php $__env->startSection('contents'); ?>
     <div class="card shadow">
         <div class="card-body">
             <div class="container">
@@ -29,7 +29,7 @@
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                     <form action="/edit/create" enctype="multipart/form-data" method="POST" class="form-group">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                      <!-- Modal Header -->
                                      <div class="modal-header">
                                        <h4 class="modal-title">追加</h4>
@@ -81,22 +81,22 @@
                          <th>編集</th>
                       </tr>
                     </thead>
-                    @forelse ($emergencyEvent->sortByDesc('event_date') as $emergencyEvent)
+                    <?php $__empty_1 = true; $__currentLoopData = $emergencyEvent->sortByDesc('event_date'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $emergencyEvent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tbody>
                       <tr>
-                         <td>{{$emergencyEvent->event_name}}</td>
-                         <td>{{$emergencyEvent->event_title}}</td>
-                         <td>{{$emergencyEvent->event_body}}</td>
+                         <td><?php echo e($emergencyEvent->event_name); ?></td>
+                         <td><?php echo e($emergencyEvent->event_title); ?></td>
+                         <td><?php echo e($emergencyEvent->event_body); ?></td>
 
                          <td>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-success" data-toggle="modal" data-target="#myModal-{{ $emergencyEvent->ee_id }}">変更</a>
+                                <a class="btn btn-success" data-toggle="modal" data-target="#myModal-<?php echo e($emergencyEvent->ee_id); ?>">変更</a>
                                 
-                                <div class="modal" id="myModal-{{ $emergencyEvent->ee_id }}">
+                                <div class="modal" id="myModal-<?php echo e($emergencyEvent->ee_id); ?>">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                     <form action="/edit" method="POST" enctype="multipart/form-data" class="form-group">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                      <!-- Modal Header -->
                                      <div class="modal-header">
                                        <h4 class="modal-title">変更</h4>
@@ -107,21 +107,21 @@
                                      <div class="modal-body">
                                            <div class="form-group">
                                              <label class="form-group-text">災害名:</label>
-                                             <input type="text" class="form-control" id="event_name" value="{{$emergencyEvent->event_name}}" name="event_name">    
+                                             <input type="text" class="form-control" id="event_name" value="<?php echo e($emergencyEvent->event_name); ?>" name="event_name">    
                                            </div>
                                            <div class="form-group">
                                              <label class="form-group-text">タイトル:</label>
-                                             <input type="text" class="form-control" value="{{$emergencyEvent->event_title}}" name="event_title">
+                                             <input type="text" class="form-control" value="<?php echo e($emergencyEvent->event_title); ?>" name="event_title">
                                            </div>
                                           <div class="form-group">
                                              <label class="form-group-text">内容:</label>
-                                             <input type="text" class="form-control" value="{{$emergencyEvent->event_body}}" name="event_body">
+                                             <input type="text" class="form-control" value="<?php echo e($emergencyEvent->event_body); ?>" name="event_body">
                                           </div>
                                           <div class="form-group">
                                              <label class="form-group-text">画像:</label>
                                              <input type="file" class="form-control" name="event_img">    
                                            </div>
-                                          <input style="display:none;" value="{{$emergencyEvent->ee_id}}" name="id">
+                                          <input style="display:none;" value="<?php echo e($emergencyEvent->ee_id); ?>" name="id">
                                      </div>
         
                                      <!-- Modal footer -->
@@ -132,17 +132,18 @@
                                     </div>
                                   </div>
                                 </div>       
-                                <button type="button" class="btn btn-danger todo-delete-btn" data-id="{{$emergencyEvent->ee_id}}">削除</button>
+                                <button type="button" class="btn btn-danger todo-delete-btn" data-id="<?php echo e($emergencyEvent->ee_id); ?>">削除</button>
                              </div>
                          </td>
                       </tr>
                     </tbody>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <span>No Found.</span>
-                    @endforelse
+                    <?php endif; ?>
                   </table>
                   </div>
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\emergency-compelete\resources\views/event/edit.blade.php ENDPATH**/ ?>
