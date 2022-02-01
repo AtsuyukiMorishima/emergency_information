@@ -1,0 +1,29 @@
+@media (max-width:297px){
+    .card{
+      width:297px !important;
+    }
+  }
+  .navbar-urledit{
+    background-color:#dae0e5 !important;
+    margin-left:25%;
+    width:50%;
+  }
+  @media (max-width:490px){
+    .navbar-urledit{
+      width:300px !important;
+    }
+  }
+  .allow{
+    margin-left: 120%;
+    margin-top: -100px;
+  }
+  @media (max-width:580px){
+    .allow{
+      margin-left:100%;
+    }
+  }
+  @media (max-width:297px){
+    .allow{
+      margin-left:120%;
+    }
+  }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Emergency'),
 
     /*
     |--------------------------------------------------------------------------
@@ -118,9 +118,9 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
-
-    'key' => env('APP_KEY'),
-
+    
+    // 'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:3WyO92QfKvyKlWY1pxIHcAonSFXRBpdRSOufx+q+6Yo='),
     'cipher' => 'AES-256-CBC',
 
     /*
