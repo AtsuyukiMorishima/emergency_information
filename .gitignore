@@ -1,7 +1,11 @@
 /node_modules
 /public/hot
 /public/storage
+/public/images/*
+/public/img/*
+/public/upload/*
 /storage/*.key
+/storage/framework/views/*
 /vendor
 .env
 .env.backup

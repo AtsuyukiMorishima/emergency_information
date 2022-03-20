@@ -1,0 +1,84 @@
+.auto-load{
+	position: fixed;
+  z-index: 9999;
+  left: 50%;
+  top: 40vh;
+}
+
+.navbar a{
+	margin:0 5px;
+}
+
+.require{
+	font-size:12px;
+	color:#ff0000;
+	margin-left:1px;
+}
+
+button i.fa, a i.fa, button i.fas, a i.fas{
+	margin-right:3px;
+}
+
+.buttons{
+	margin-bottom:5px;
+}
+
+.jFiler{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.jFiler-input-dragDrop{
+  width: unset;
+  margin: unset;
+}
+
+.jFiler-items.jFiler-row{
+  margin-left: 15px;
+}
+
+.upload-guide-msg{
+  text-align: center;
+  margin: 5px 0;
+}
+
+.import-table td{
+  overflow-wrap: anywhere;
+}
+
+.import-table td img{
+  max-width:100%;
+}
+
+@media (max-width:297px){
+    .card{
+      width:297px !important;
+    }
+  }
+  .navbar-urledit{
+    background-color:#dae0e5 !important;
+    margin-left:25%;
+    width:50%;
+  }
+  @media (max-width:490px){
+    .navbar-urledit{
+      width:300px !important;
+    }
+  }
+  .allow{
+    margin-left: 120%;
+    margin-top: -100px;
+  }
+  @media (max-width:580px){
+    .allow{
+      margin-left:100%;
+    }
+  }
+  @media (max-width:297px){
+    .allow{
+      margin-left:120%;
+    }
+  }
